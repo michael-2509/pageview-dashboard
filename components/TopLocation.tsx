@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import nigeria from "../public/assets/flags/nigeria.svg";
 import germany from "../public/assets/flags/germany.svg";
-import ghana from "../public/assets/flags/finland.svg";
+import ghana from "../public/assets/flags/ghana.svg";
 import finland from "../public/assets/flags/finland.svg";
 import uk from "../public/assets/flags/england.svg";
 
