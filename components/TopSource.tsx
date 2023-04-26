@@ -6,7 +6,7 @@ import Image from "next/image";
 import facebook from "../public/assets/social/facebook.svg";
 import google from "../public/assets/social/twitter.svg";
 import instagram from "../public/assets/social/Instagram.svg";
-import linkedIn from "../public/assets/social/linkedIn.svg";
+import linkedin from "../public/assets/social/linkedIn.svg";
 
 export type TopSourceData = {
   source: string;
@@ -22,7 +22,7 @@ type SocialImages = {
   google: string;
   instagram: string;
   facebook: string;
-  linkedIn: string;
+  linkedin: string;
 };
 
 const TopSource = ({ topSource }: TopSourceProps) => {
@@ -32,7 +32,7 @@ const TopSource = ({ topSource }: TopSourceProps) => {
     google: google,
     instagram: instagram,
     facebook: facebook,
-    linkedIn: linkedIn,
+    linkedin: linkedin,
   };
 
   const [Source, setSource] = useState(topSource);

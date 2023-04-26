@@ -1,5 +1,5 @@
 import LineGraph from "@/components/LineGraph";
-import Header from "@/components/Header";
+import Header from "../components/Header";
 import SideBar from "@/components/sideBar";
 
 import type { TopLocationProps } from "../components/TopLocation";
