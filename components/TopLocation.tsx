@@ -4,20 +4,42 @@ import { Chart, ArcElement, ChartOptions } from "chart.js";
 import Image from "next/image";
 
 import nigeria from "../public/assets/flags/nigeria.svg";
+import germany from "../public/assets/flags/neitherlan.svg";
+import ghana from "../public/assets/flags/finland.svg";
+import finland from "../public/assets/flags/andora.svg";
+import uk from "../public/assets/flags/finland.svg";
 
 export type TopLocationData = {
   country: string;
   count: number;
   percent: number;
 };
+
 export type TopLocationProps = { topLocation: TopLocationData[] };
 
 type DoughnutChartOptions = ChartOptions<"doughnut">;
+
+type CountryImages = {
+  [key: string]: string;
+  Nigeria: string;
+  Germany: string;
+  Ghana: string;
+  Finland: string;
+  "United Kingdom": string;
+};
 
 const TopLocation = ({ topLocation }: TopLocationProps) => {
   Chart.register(ArcElement);
 
   const [location, setLocation] = useState(topLocation);
+
+  const countryImages: CountryImages = {
+    Nigeria: nigeria,
+    Germany: germany,
+    Ghana: ghana,
+    Finland: finland,
+    "United Kingdom": uk,
+  };
 
   const data = {
     labels: [
@@ -30,7 +52,7 @@ const TopLocation = ({ topLocation }: TopLocationProps) => {
     ],
     datasets: [
       {
-        data: [34, 19, 25, 20, 2, 24],
+        data: topLocation.map((item) => item.percent),
         backgroundColor: [
           "#FF6384",
           "#36A2EB",
@@ -46,7 +68,7 @@ const TopLocation = ({ topLocation }: TopLocationProps) => {
   const options: DoughnutChartOptions = {
     plugins: {
       legend: {
-        position: "right",
+        position: "top",
       },
     },
   };
@@ -57,16 +79,20 @@ const TopLocation = ({ topLocation }: TopLocationProps) => {
         <h2 className="text-lg font-medium">Top Location</h2>
         <a className="cursor-pointer text-sm text-orange">View full reports</a>
       </div>
-      <ul>
-        {location.map((item, index) => (
-          <li key={index} className="flex gap-2">
-            <Image className="" src={nigeria} alt="NGN" />
-            <p>{item.country}</p>
-            <p>{`${item.percent}%`}</p>
-          </li>
-        ))}
-      </ul>
-      <Doughnut data={data} options={options} />
+      <div className="flex justify-between">
+        <ul>
+          {location.map((item, index) => (
+            <li key={index} className="flex gap-2">
+              <Image src={countryImages[item.country]} alt="NGN" />
+              <p>{item.country}</p>
+              <p>{`${item.percent}%`}</p>
+            </li>
+          ))}
+        </ul>
+        <div style={{ width: "160px", height: "160px" }}>
+          <Doughnut data={data} options={options} />
+        </div>
+      </div>
     </section>
   );
 };

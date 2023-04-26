@@ -3,14 +3,38 @@ import Header from "@/components/Header";
 import SideBar from "@/components/sideBar";
 
 import type { TopLocationProps } from "../components/TopLocation";
+import type { TopSourceProps } from "../components/TopSource";
+// import type { GraphDataProps } from "../components/LineGraph";
 
-export default function Home({ topLocation }: TopLocationProps) {
+interface GraphDataProps {
+  graphData: {
+    views: {
+      [date: string]: number;
+    };
+  };
+}
+
+interface MyComponentProps
+  extends TopLocationProps,
+    TopSourceProps,
+    GraphDataProps {}
+
+export default function Home({
+  topLocation,
+  topSource,
+  graphData,
+}: TopLocationProps & TopSourceProps & GraphDataProps) {
+  console.log(graphData);
   return (
     <main className="flex min-h-screen pb-24">
       <SideBar />
       <section className="w-full px-8">
         <Header />
-        <LineGraph topLocation={topLocation} />
+        <LineGraph
+          topLocation={topLocation}
+          topSource={topSource}
+          graphData={graphData}
+        />
       </section>
     </main>
   );
@@ -30,9 +54,15 @@ export async function getStaticProps() {
       throw new Error("Invalid Data");
     }
 
-    return { props: { topLocation: data.top_locations } };
+    return {
+      props: {
+        topLocation: data.top_locations,
+        topSource: data.top_sources,
+        graphData: data.graph_data,
+      },
+    };
   } catch (error) {
     console.log(error);
-    return { props: { topLocation: [] } };
+    return { props: { topLocation: [], topSource: [] } };
   }
 }

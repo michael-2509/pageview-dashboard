@@ -10,7 +10,7 @@ const Header = () => {
           </h2>
           <p className="text-sm">Check out your dashboard summary.</p>
         </div>
-        <p>View Analytics</p>
+        <a className="cursor-pointer text-sm text-orange">View Analytics</a>
       </div>
     </section>
   );

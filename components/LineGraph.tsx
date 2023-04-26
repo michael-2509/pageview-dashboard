@@ -18,29 +18,42 @@ Chart.register(
 );
 import { useEffect, useRef, useState } from "react";
 import TopLocation, { TopLocationProps } from "./TopLocation";
+import TopSource, { TopSourceProps } from "./TopSource";
 
-const LineGraph = ({ topLocation }: TopLocationProps) => {
+interface GraphDataProps {
+  graphData: {
+    views: {
+      [date: string]: number;
+    };
+  };
+}
+
+const LineGraph = ({
+  topLocation,
+  topSource,
+  graphData,
+}: TopLocationProps & TopSourceProps & GraphDataProps) => {
+  console.log(graphData);
   const [interval, setInterval] = useState("1D");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const chartRef = useRef<Chart | null>(null);
 
+  // Format the dates as "day month" format
+  // const formatedDate = { day: "numeric", month: "string" };
+  // const labels = Object.keys(graphData.views).map((dateString) => {
+  //   const date = new Date(dateString);
+  //   return date.toLocaleDateString("en-US", formatedDate);
+  // });
+
   const getDataForInterval = (interval: string) => {
     // TODO: Implement logic to get data for the selected interval
     return {
-      labels: [
-        "18 Dec",
-        "19 Dec",
-        "20 Dec",
-        "21 Dec",
-        "22 Dec",
-        "23 Dec",
-        "24 Dec",
-      ],
+      labels: Object.keys(graphData.views),
       datasets: [
         {
           label: "My Dataset",
-          data: [850, 950, 620, 980, 180, 220],
+          data: Object.values(graphData.views),
           fill: true,
 
           borderColor: "#FF5403",
@@ -81,66 +94,69 @@ const LineGraph = ({ topLocation }: TopLocationProps) => {
       chart.destroy();
       chartRef.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [interval]);
 
   const handleIntervalChange = (
-    interval: "1d" | "3d" | "7d" | "30d" | "all"
+    interval: "1d" | "3d" | "7d" | "30d" | "All Time"
   ) => {
-    console.log(interval);
+    setInterval(interval);
   };
 
   return (
     <section>
-      <div className="shadow-md">
+      <div>
+        <button
+          onClick={() => handleIntervalChange("1d")}
+          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
+                     px-4 py-2 text-sm font-medium hover:border-orange 
+                     hover:bg-light-orange hover:text-orange"
+        >
+          1 Day
+        </button>
+        <button
+          onClick={() => handleIntervalChange("3d")}
+          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
+                     px-4 py-2 text-sm font-medium hover:border-orange 
+                     hover:bg-light-orange hover:text-orange"
+        >
+          3 Days
+        </button>
+        <button
+          onClick={() => handleIntervalChange("7d")}
+          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
+                     px-4 py-2 text-sm font-medium hover:border-orange 
+                     hover:bg-light-orange hover:text-orange"
+        >
+          7 Days
+        </button>
+        <button
+          onClick={() => handleIntervalChange("30d")}
+          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
+                     px-4 py-2 text-sm font-medium hover:border-orange 
+                     hover:bg-light-orange hover:text-orange"
+        >
+          30 Days
+        </button>
+        <button
+          onClick={() => handleIntervalChange("All Time")}
+          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
+                     px-4 py-2 text-sm font-medium hover:border-orange 
+                     hover:bg-light-orange hover:text-orange"
+        >
+          All Time
+        </button>
+      </div>
+      <div className="mt-8 px-6 py-8 shadow-md">
         {" "}
-        <div>
-          <button
-            onClick={() => handleIntervalChange("1d")}
-            className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
-          >
-            1 Day
-          </button>
-          <button
-            onClick={() => handleIntervalChange("3d")}
-            className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
-          >
-            3 Days
-          </button>
-          <button
-            onClick={() => handleIntervalChange("7d")}
-            className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
-          >
-            7 Days
-          </button>
-          <button
-            onClick={() => handleIntervalChange("30d")}
-            className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
-          >
-            30 Days
-          </button>
-          <button
-            onClick={() => handleIntervalChange("all")}
-            className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
-          >
-            All Time
-          </button>
-        </div>
+        <h2 className="font-bold">Page Views</h2>
+        <p className="mt-2 text-sm text-gray">{interval}</p>
         <canvas ref={canvasRef}></canvas>
       </div>
       <div className="mt-6 flex gap-4">
         {" "}
         <TopLocation topLocation={topLocation} />
-        <TopLocation topLocation={topLocation} />
+        <TopSource topSource={topSource} />
       </div>
     </section>
   );
