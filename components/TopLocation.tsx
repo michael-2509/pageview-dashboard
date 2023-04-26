@@ -4,10 +4,10 @@ import { Chart, ArcElement, ChartOptions } from "chart.js";
 import Image from "next/image";
 
 import nigeria from "../public/assets/flags/nigeria.svg";
-import germany from "../public/assets/flags/neitherlan.svg";
+import germany from "../public/assets/flags/germany.svg";
 import ghana from "../public/assets/flags/finland.svg";
-import finland from "../public/assets/flags/andora.svg";
-import uk from "../public/assets/flags/finland.svg";
+import finland from "../public/assets/flags/finland.svg";
+import uk from "../public/assets/flags/england.svg";
 
 export type TopLocationData = {
   country: string;
@@ -42,21 +42,14 @@ const TopLocation = ({ topLocation }: TopLocationProps) => {
   };
 
   const data = {
-    labels: [
-      "Nigeria",
-      "Germany",
-      "Ghana",
-      "Finland",
-      "United Kingdom",
-      "Others",
-    ],
+    labels: topLocation.map((item) => item.country),
     datasets: [
       {
         data: topLocation.map((item) => item.percent),
         backgroundColor: [
           "#FF6384",
           "#36A2EB",
-          "#FFCE56",
+          "#FFB6F5",
           "#8C9EFF",
           "#FF9F40",
           "#BDBDBD",
@@ -68,7 +61,23 @@ const TopLocation = ({ topLocation }: TopLocationProps) => {
   const options: DoughnutChartOptions = {
     plugins: {
       legend: {
-        position: "top",
+        position: "right",
+        labels: {
+          usePointStyle: true,
+          boxWidth: 30,
+        },
+      },
+
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const label = context.label || "";
+            const value = context.raw || 0;
+            const backgroundColor = data.datasets[0].backgroundColor;
+            const colorSquare = `<span style="display:inline-block; height:10px; width:10px; background-color:${backgroundColor}; margin-right:10px;"></span>`;
+            return `${colorSquare} ${label} (${value}%)`;
+          },
+        },
       },
     },
   };

@@ -4,7 +4,7 @@ import { Chart, ArcElement, ChartOptions } from "chart.js";
 import Image from "next/image";
 
 import facebook from "../public/assets/social/facebook.svg";
-import google from "../public/assets/social/twitter.svg";
+import google from "../public/assets/social/google.svg";
 import instagram from "../public/assets/social/Instagram.svg";
 import linkedin from "../public/assets/social/linkedIn.svg";
 
