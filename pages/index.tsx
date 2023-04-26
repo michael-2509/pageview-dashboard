@@ -1,5 +1,5 @@
 import LineGraph from "@/components/LineGraph";
-import Header from "../components/Header";
+
 import SideBar from "@/components/sideBar";
 
 import type { TopLocationProps } from "../components/TopLocation";
@@ -28,7 +28,19 @@ export default function Home({
     <main className="flex min-h-screen pb-24">
       <SideBar />
       <section className="w-full px-8">
-        <Header />
+        <section className="mb-6">
+          {" "}
+          <h1 className="py-5 text-xl font-bold text-black">DashBoard</h1>
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-[24px] font-bold text-black">
+                Good Morning, Blessing
+              </h2>
+              <p className="text-sm">Check out your dashboard summary.</p>
+            </div>
+            <a className="cursor-pointer text-sm text-orange">View Analytics</a>
+          </div>
+        </section>
         <LineGraph
           topLocation={topLocation}
           topSource={topSource}
