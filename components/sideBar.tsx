@@ -67,7 +67,7 @@ const SideBar = () => {
         <div className="absolute bottom-5 flex">
           <Image className="rounded-full" src={profile} alt="profile" />
           <p className="ml-2">Blessing Daniels</p>
-          <Image className="relative left-10" src={more} alt="more" />
+          <Image className="relative left-5" src={more} alt="more" />
         </div>
       </aside>
     </>
