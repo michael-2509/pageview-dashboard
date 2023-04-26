@@ -4,7 +4,6 @@ import SideBar from "@/components/sideBar";
 
 import type { TopLocationProps } from "../components/TopLocation";
 import type { TopSourceProps } from "../components/TopSource";
-// import type { GraphDataProps } from "../components/LineGraph";
 
 interface GraphDataProps {
   graphData: {
