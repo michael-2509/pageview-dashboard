@@ -25,7 +25,7 @@ export default function Home({
 }: TopLocationProps & TopSourceProps & GraphDataProps) {
   console.log(graphData);
   return (
-    <main className="flex min-h-screen pb-24">
+    <main className="flex min-h-screen">
       <SideBar />
       <section className="w-full px-8">
         <section className="mb-6">

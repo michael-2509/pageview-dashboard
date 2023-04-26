@@ -79,10 +79,10 @@ const TopLocation = ({ topLocation }: TopLocationProps) => {
         <h2 className="text-lg font-medium">Top Location</h2>
         <a className="cursor-pointer text-sm text-orange">View full reports</a>
       </div>
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <ul>
           {location.map((item, index) => (
-            <li key={index} className="flex gap-2">
+            <li key={index} className="mb-5 flex gap-2 ">
               <Image src={countryImages[item.country]} alt="NGN" />
               <p>{item.country}</p>
               <p>{`${item.percent}%`}</p>

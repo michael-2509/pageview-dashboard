@@ -75,10 +75,10 @@ const TopSource = ({ topSource }: TopSourceProps) => {
         <h2 className="text-lg font-medium">Top Source</h2>
         <a className="cursor-pointer text-sm text-orange">View full reports</a>
       </div>
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <ul>
           {Source.map((item, index) => (
-            <li key={index} className="flex gap-2">
+            <li key={index} className="mb-5 flex gap-2">
               <Image src={socialImages[item.source]} alt="NGN" />
               <p>{item.source}</p>
               <p>{`${item.percent}%`}</p>
