@@ -29,6 +29,17 @@ export default function Home({
   const handleItemClick = (item: string) => {
     setActiveItem(item);
   };
+
+  const getTimeOfDay = () => {
+    const hour = new Date().getHours();
+    if (hour >= 1 && hour < 12) {
+      return "morning";
+    } else if (hour >= 12 && hour < 16) {
+      return "afternoon";
+    } else {
+      return "evening";
+    }
+  };
   return (
     <main className="flex min-h-screen">
       <SideBar activeItem={activeItem} onItemSelect={handleItemClick} />
@@ -39,7 +50,7 @@ export default function Home({
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-[24px] font-bold text-black">
-                Good Morning, Blessing
+                Good {getTimeOfDay()}, Blessing
               </h2>
               <p className="text-sm">Check out your dashboard summary.</p>
             </div>
