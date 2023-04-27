@@ -15,13 +15,18 @@ import subscription from "../public/assets/subscriptions.svg";
 import { useState } from "react";
 import ToggleButton from "./ToggleButton";
 
-const SideBar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [activeItem, setActiveItem] = useState("Dashboard");
+interface SideBarProps {
+  activeItem: string;
+  onItemSelect: (item: string) => void;
+}
 
-  const handleItemClick = (item: string) => {
-    setActiveItem(item);
-  };
+const SideBar = ({ activeItem, onItemSelect }: SideBarProps) => {
+  const [showSidebar, setShowSidebar] = useState(false);
+  // const [activeItem, setActiveItem] = useState("Dashboard");
+
+  // const onItemSelect = (item: string) => {
+  //   setActiveItem(item);
+  // };
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -69,7 +74,7 @@ const SideBar = () => {
           className={`${
             activeItem === "Dashboard" ? "hoverstate text-orange" : ""
           }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-          onClick={() => handleItemClick("Dashboard")}
+          onClick={() => onItemSelect("Dashboard")}
         >
           <Image className="svgColor" src={dashboard} alt="dashboard" />
           <p>Dashboard</p>
@@ -78,7 +83,7 @@ const SideBar = () => {
           className={`${
             activeItem === "edit" ? "hoverstate text-orange" : ""
           }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-          onClick={() => handleItemClick("edit")}
+          onClick={() => onItemSelect("edit")}
         >
           <Image src={edit} alt="Edit" />
           <p>edit</p>
@@ -87,7 +92,7 @@ const SideBar = () => {
           className={`${
             activeItem === "group" ? "hoverstate text-orange" : ""
           }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-          onClick={() => handleItemClick("group")}
+          onClick={() => onItemSelect("group")}
         >
           <Image src={group} alt="Group" />
           <p>group</p>
@@ -96,7 +101,7 @@ const SideBar = () => {
           className={`${
             activeItem === "time" ? "hoverstate text-orange" : ""
           }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-          onClick={() => handleItemClick("time")}
+          onClick={() => onItemSelect("time")}
         >
           <Image src={time} alt="Time" />
           <p>time</p>
@@ -108,7 +113,7 @@ const SideBar = () => {
             className={`${
               activeItem === "Add Photo" ? "hoverstate text-orange" : ""
             }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-            onClick={() => handleItemClick("Add Photo")}
+            onClick={() => onItemSelect("Add Photo")}
           >
             <Image src={photo} alt="time" />
             <p>Add Photo</p>
@@ -117,7 +122,7 @@ const SideBar = () => {
             className={`${
               activeItem === "Delete" ? "hoverstate text-orange" : ""
             }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-            onClick={() => handleItemClick("Delete")}
+            onClick={() => onItemSelect("Delete")}
           >
             <Image src={deleteIcon} alt="time" />
             <p>delete</p>
@@ -129,7 +134,7 @@ const SideBar = () => {
           className={`${
             activeItem === "Subscription" ? "hoverstate text-orange" : ""
           }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-          onClick={() => handleItemClick("Subscription")}
+          onClick={() => onItemSelect("Subscription")}
         >
           <Image src={subscription} alt="time" />
           <p>Subscription</p>
@@ -138,7 +143,7 @@ const SideBar = () => {
           className={`${
             activeItem === "file" ? "hoverstate text-orange" : ""
           }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-          onClick={() => handleItemClick("file")}
+          onClick={() => onItemSelect("file")}
         >
           <Image src={file} alt="time" />
           <p>File</p>
@@ -147,7 +152,7 @@ const SideBar = () => {
           className={`${
             activeItem === "alarm" ? "hoverstate text-orange" : ""
           }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
-          onClick={() => handleItemClick("alarm")}
+          onClick={() => onItemSelect("alarm")}
         >
           <Image src={alarm} alt="time" />
           <p>Alarm</p>

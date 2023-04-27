@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-type Props = {
+export type props = {
   onClick: () => void;
 };
 
-const ToggleButton: React.FC<Props> = ({ onClick }) => {
+const ToggleButton: React.FC<props> = ({ onClick }) => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (

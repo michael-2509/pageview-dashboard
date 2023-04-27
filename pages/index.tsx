@@ -31,8 +31,8 @@ export default function Home({
   };
   return (
     <main className="flex min-h-screen">
-      <SideBar />
-      <section className="w-full px-8 pb-4 md:ml-60">
+      <SideBar activeItem={activeItem} onItemSelect={handleItemClick} />
+      <section className="w-full px-8 md:ml-60">
         <section className="mb-6">
           {" "}
           <h1 className="py-5 text-xl font-bold text-black">DashBoard</h1>
@@ -46,12 +46,14 @@ export default function Home({
             <a className="cursor-pointer text-sm text-orange">View Analytics</a>
           </div>
         </section>
-        {activeItem === "Dashboard" && (
+        {activeItem === "Dashboard" ? (
           <LineGraph
             topLocation={topLocation}
             topSource={topSource}
             graphData={graphData}
           />
+        ) : (
+          <p>No Data Available</p>
         )}
       </section>
     </main>
