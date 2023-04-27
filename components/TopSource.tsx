@@ -71,12 +71,12 @@ const TopSource = ({ topSource }: TopSourceProps) => {
   };
 
   return (
-    <section className=" w-2/4 px-6 pb-8 pt-6 shadow-md">
+    <section className=" w-full px-6 pb-8 pt-6 shadow-md md:w-2/4">
       <div className="mb-8 flex justify-between">
         <h2 className="text-lg font-medium">Top Source</h2>
         <a className="cursor-pointer text-sm text-orange">View full reports</a>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-center justify-between md:flex-row">
         <ul>
           {Source.map((item, index) => (
             <li key={index} className="mb-5 flex items-center gap-2">
