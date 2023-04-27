@@ -7,6 +7,7 @@ import {
   LinearScale,
   Title,
   CategoryScale,
+  Filler,
 } from "chart.js";
 Chart.register(
   LineController,
@@ -14,7 +15,8 @@ Chart.register(
   PointElement,
   LinearScale,
   Title,
-  CategoryScale
+  CategoryScale,
+  Filler
 );
 import { useEffect, useRef, useState } from "react";
 import TopLocation, { TopLocationProps } from "./TopLocation";
@@ -33,7 +35,6 @@ const LineGraph = ({
   topSource,
   graphData,
 }: TopLocationProps & TopSourceProps & GraphDataProps) => {
-  console.log(graphData);
   const [interval, setInterval] = useState("7 Days");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -77,6 +78,9 @@ const LineGraph = ({
       options: {
         responsive: true,
         plugins: {
+          filler: {
+            propagate: true, // Set this to true if you want the fill to propagate to the next dataset
+          },
           legend: {
             position: "top",
           },
