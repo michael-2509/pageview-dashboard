@@ -13,6 +13,7 @@ import profile from "../public/assets/unsplash_F16KPYxfm6s.svg";
 import time from "../public/assets/hourglass_empty.svg";
 import subscription from "../public/assets/subscriptions.svg";
 import { useState } from "react";
+import ToggleButton from "./ToggleButton";
 
 const SideBar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -21,56 +22,18 @@ const SideBar = () => {
     setShowSidebar(!showSidebar);
   };
 
+  const getState = () => {};
+
   return (
     <>
-      <nav className="shadow-md md:hidden">
-        <button
-          onClick={toggleSidebar}
-          type="button"
-          className="text-gray-400 hover:bg-gray-700 inline-flex items-center justify-center rounded-md p-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className={`${showSidebar ? "hidden" : "block"} h-6 w-6`}
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-          <svg
-            className={`${showSidebar ? "block" : "hidden"} h-6 w-6`}
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </nav>
+      <ToggleButton onClick={toggleSidebar} />
 
       <aside
         className={`${
           showSidebar ? "translate-x-0 ease-out" : "-translate-x-full ease-in"
         } fixed h-full w-60 bg-[#e5e8ea] px-8 shadow-md md:static   md:h-auto md:translate-x-0`}
       >
-        <div className="pb-12 pt-8 ">
+        <div className="flex justify-between pb-12 pt-8">
           {" "}
           <Image src={logo} alt="Mainstack" />
           <button
@@ -81,21 +44,6 @@ const SideBar = () => {
             aria-expanded="false"
           >
             <span className="sr-only">Open main menu</span>
-            <svg
-              className={`${showSidebar ? "hidden" : "block"} h-6 w-6`}
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
             <svg
               className={`${showSidebar ? "block" : "hidden"} h-6 w-6`}
               xmlns="http://www.w3.org/2000/svg"
