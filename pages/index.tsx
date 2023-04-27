@@ -27,7 +27,7 @@ export default function Home({
   return (
     <main className="flex min-h-screen">
       <SideBar />
-      <section className="w-full px-8">
+      <section className="ml-60 w-full px-8">
         <section className="mb-6">
           {" "}
           <h1 className="py-5 text-xl font-bold text-black">DashBoard</h1>

@@ -59,6 +59,7 @@ const TopLocation = ({ topLocation }: TopLocationProps) => {
   };
 
   const options: DoughnutChartOptions = {
+    responsive: true,
     plugins: {
       legend: {
         position: "right",

@@ -16,7 +16,7 @@ import subscription from "../public/assets/subscriptions.svg";
 const SideBar = () => {
   return (
     <>
-      <aside className="w-80 pl-16 shadow-md">
+      <aside className="fixed h-full w-60 pl-8 shadow-md">
         <div className="pb-12 pt-8 ">
           {" "}
           <Image src={logo} alt="Mainstack" />
