@@ -2,9 +2,12 @@ import LineGraph from "@/components/LineGraph";
 
 import SideBar from "@/components/sideBar";
 
+import sunrise from "../public/assets/sun-behind-large-cloud-svgrepo-com.svg";
+
 import type { TopLocationProps } from "../components/TopLocation";
 import type { TopSourceProps } from "../components/TopSource";
 import { useState } from "react";
+import Image from "next/image";
 
 interface GraphDataProps {
   graphData: {
@@ -49,9 +52,14 @@ export default function Home({
           <h1 className="py-5 text-xl font-bold text-black">DashBoard</h1>
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-[24px] font-bold text-black">
-                Good {getTimeOfDay()}, Blessing
-              </h2>
+              <div className="flex items-center">
+                {" "}
+                <h2 className="text-[24px] font-bold text-black">
+                  Good {getTimeOfDay()}, Blessing
+                </h2>
+                <Image src={sunrise} alt="sunrise" />
+              </div>
+
               <p className="text-sm">Check out your dashboard summary.</p>
             </div>
             <a className="cursor-pointer text-sm text-orange">View Analytics</a>
