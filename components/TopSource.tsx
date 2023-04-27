@@ -78,10 +78,19 @@ const TopSource = ({ topSource }: TopSourceProps) => {
       <div className="flex items-center justify-between">
         <ul>
           {Source.map((item, index) => (
-            <li key={index} className="mb-5 flex gap-2">
+            <li key={index} className="mb-5 flex items-center gap-2">
               <Image src={socialImages[item.source]} alt="NGN" />
               <p>{item.source}</p>
               <p>{`${item.percent}%`}</p>
+              <div
+                style={{
+                  display: "inline-block",
+                  height: "10px",
+                  width: "10px",
+                  backgroundColor: data.datasets[0].backgroundColor[index],
+                  marginRight: "10px",
+                }}
+              ></div>
             </li>
           ))}
         </ul>
