@@ -31,7 +31,7 @@ const SideBar = () => {
       <aside
         className={`${
           showSidebar ? "translate-x-0 ease-out" : "-translate-x-full ease-in"
-        } fixed h-full w-60 bg-[#e5e8ea] px-8 shadow-md md:static   md:h-auto md:translate-x-0`}
+        } fixed h-full w-60 bg-[#e5e8ea] px-8 shadow-md md:translate-x-0 md:bg-white`}
       >
         <div className="flex justify-between pb-12 pt-8">
           {" "}
