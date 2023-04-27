@@ -89,6 +89,7 @@ const TopSource = ({ topSource }: TopSourceProps) => {
                   height: "10px",
                   width: "10px",
                   backgroundColor: data.datasets[0].backgroundColor[index],
+                  borderRadius: "10px",
                   marginRight: "10px",
                 }}
               ></div>

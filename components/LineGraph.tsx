@@ -34,7 +34,7 @@ const LineGraph = ({
   graphData,
 }: TopLocationProps & TopSourceProps & GraphDataProps) => {
   console.log(graphData);
-  const [interval, setInterval] = useState("1D");
+  const [interval, setInterval] = useState("7 Days");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const chartRef = useRef<Chart | null>(null);
@@ -98,7 +98,7 @@ const LineGraph = ({
   }, [interval]);
 
   const handleIntervalChange = (
-    interval: "1d" | "3d" | "7d" | "30d" | "All Time"
+    interval: "1 Day" | "3 Days" | "7 Days" | "30 Days" | "All Time"
   ) => {
     setInterval(interval);
   };
@@ -107,42 +107,67 @@ const LineGraph = ({
     <section>
       <div>
         <button
-          onClick={() => handleIntervalChange("1d")}
-          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
+          onClick={() => handleIntervalChange("1 Day")}
+          className={`mr-3 cursor-pointer rounded-3xl border border-white-border 
+          px-4 py-2 text-sm font-medium hover:border-orange 
+          hover:bg-light-orange hover:text-orange 
+          ${
+            interval === "1 Day"
+              ? "border-orange bg-light-orange text-orange "
+              : ""
+          }`}
         >
           1 Day
         </button>
         <button
-          onClick={() => handleIntervalChange("3d")}
-          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
+          onClick={() => handleIntervalChange("3 Days")}
+          className={`mr-3 cursor-pointer rounded-3xl border border-white-border 
+          px-4 py-2 text-sm font-medium hover:border-orange 
+          hover:bg-light-orange hover:text-orange 
+          ${
+            interval === "3 Days"
+              ? "border-orange bg-light-orange text-orange "
+              : ""
+          }`}
         >
           3 Days
         </button>
         <button
-          onClick={() => handleIntervalChange("7d")}
-          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
+          onClick={() => handleIntervalChange("7 Days")}
+          className={`mr-3 cursor-pointer rounded-3xl border border-white-border 
+          px-4 py-2 text-sm font-medium hover:border-orange 
+          hover:bg-light-orange hover:text-orange 
+          ${
+            interval === "7 Days"
+              ? "border-orange bg-light-orange text-orange "
+              : ""
+          }`}
         >
           7 Days
         </button>
         <button
-          onClick={() => handleIntervalChange("30d")}
-          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
+          onClick={() => handleIntervalChange("30 Days")}
+          className={`mr-3 cursor-pointer rounded-3xl border border-white-border 
+          px-4 py-2 text-sm font-medium hover:border-orange 
+          hover:bg-light-orange hover:text-orange 
+          ${
+            interval === "30 Days"
+              ? "border-orange bg-light-orange text-orange "
+              : ""
+          }`}
         >
           30 Days
         </button>
         <button
           onClick={() => handleIntervalChange("All Time")}
-          className="mr-3 cursor-pointer rounded-3xl border border-white-border 
-                     px-4 py-2 text-sm font-medium hover:border-orange 
-                     hover:bg-light-orange hover:text-orange"
+          className={`mr-3 cursor-pointer rounded-3xl border border-white-border 
+          px-4 py-2 text-sm font-medium hover:border-orange 
+          hover:bg-light-orange hover:text-orange 
+          ${
+            interval === "ALL Time"
+              ? "border-orange bg-light-orange text-orange "
+              : ""
+          }`}
         >
           All Time
         </button>

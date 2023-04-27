@@ -12,3 +12,14 @@
       brightness(9%) contrast(69%);
   }
 }
+
+/* @font-face {
+  font-family: "Söhne";
+  src: url("../public//font/TestSöhne/TestSöhne-Halbfett.otf")
+    format("truetype");
+  
+}
+
+body {
+  font-family: "Söhne", sans-serif;
+} */

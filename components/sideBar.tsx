@@ -17,12 +17,15 @@ import ToggleButton from "./ToggleButton";
 
 const SideBar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [activeItem, setActiveItem] = useState("Dashboard");
+
+  const handleItemClick = (item: string) => {
+    setActiveItem(item);
+  };
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
-
-  const getState = () => {};
 
   return (
     <>
@@ -62,45 +65,90 @@ const SideBar = () => {
           </button>
         </div>
 
-        <div className="hover:hoverstate mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
+        <div
+          className={`${
+            activeItem === "Dashboard" ? "hoverstate text-orange" : ""
+          }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+          onClick={() => handleItemClick("Dashboard")}
+        >
           <Image className="svgColor" src={dashboard} alt="dashboard" />
           <p>Dashboard</p>
         </div>
-        <div className="hover:hoverstate mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
-          <Image src={edit} alt="edit" />
+        <div
+          className={`${
+            activeItem === "edit" ? "hoverstate text-orange" : ""
+          }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+          onClick={() => handleItemClick("edit")}
+        >
+          <Image src={edit} alt="Edit" />
           <p>edit</p>
         </div>
-        <div className="hover:hoverstate mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
-          <Image src={group} alt="group" />
+        <div
+          className={`${
+            activeItem === "group" ? "hoverstate text-orange" : ""
+          }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+          onClick={() => handleItemClick("group")}
+        >
+          <Image src={group} alt="Group" />
           <p>group</p>
         </div>
-        <div className="hover:hoverstate mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
-          <Image src={time} alt="time" />
+        <div
+          className={`${
+            activeItem === "time" ? "hoverstate text-orange" : ""
+          }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+          onClick={() => handleItemClick("time")}
+        >
+          <Image src={time} alt="Time" />
           <p>time</p>
         </div>
 
         <div>
           <p className="mb-5">Others 1</p>
-          <div className="hover:hoverstate mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
+          <div
+            className={`${
+              activeItem === "Add Photo" ? "hoverstate text-orange" : ""
+            }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+            onClick={() => handleItemClick("Add Photo")}
+          >
             <Image src={photo} alt="time" />
             <p>Add Photo</p>
           </div>
-          <div className="hover:hoverstate mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
+          <div
+            className={`${
+              activeItem === "Delete" ? "hoverstate text-orange" : ""
+            }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+            onClick={() => handleItemClick("Delete")}
+          >
             <Image src={deleteIcon} alt="time" />
             <p>delete</p>
           </div>
         </div>
 
         <p className="mb-5">Others 2</p>
-        <div className="hover:hoverstate  mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
+        <div
+          className={`${
+            activeItem === "Subscription" ? "hoverstate text-orange" : ""
+          }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+          onClick={() => handleItemClick("Subscription")}
+        >
           <Image src={subscription} alt="time" />
           <p>Subscription</p>
         </div>
-        <div className="hover:hoverstate  mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
+        <div
+          className={`${
+            activeItem === "file" ? "hoverstate text-orange" : ""
+          }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+          onClick={() => handleItemClick("file")}
+        >
           <Image src={file} alt="time" />
           <p>File</p>
         </div>
-        <div className="hover:hoverstate  mb-6 flex gap-5 hover:cursor-pointer hover:text-orange">
+        <div
+          className={`${
+            activeItem === "alarm" ? "hoverstate text-orange" : ""
+          }hover:hoverstate hover:text-orange" mb-6 flex gap-5 hover:cursor-pointer`}
+          onClick={() => handleItemClick("alarm")}
+        >
           <Image src={alarm} alt="time" />
           <p>Alarm</p>
         </div>
